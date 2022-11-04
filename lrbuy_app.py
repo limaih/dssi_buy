@@ -6,6 +6,9 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
+
+from sklearn.preprocessing import StandardScaler
+
 # import pyautogui # for reset button: pip install pyautogui
 
 # load the model.pkl
@@ -41,7 +44,7 @@ def main():
 	#front end elements of the web page 
 	# pick colors from: https://www.w3schools.com/tags/ref_colornames.asp
 	html_temp = """ <div style ="background-color:AntiqueWhite;padding:15px"> 
-       <h1 style ="color:black;text-align:center;">A loan application assessment app</h1> 
+       <h1 style ="color:black;text-align:center;">Buy Car Assessment App</h1> 
        </div> <br/>"""
 
     #display the front end aspect
@@ -51,12 +54,11 @@ def main():
 	st.sidebar.info('Provide input using the panel')
 	st.info('Click Assess button below')
 
-	age = st.sidebar.slider('Age', 16, 99, 20)
+	age = st.sidebar.slider('age', 16, 100, 20)
 	st.write('input age', age)
-	salary = st.sidebar.slider('salary in 1000s', 20, 100, 60)
+	salary = st.sidebar.slider('salary in 1000s', 10, 100, 60)
 	st.write('input salary', salary*1000)
-	
-    
+	    
 	result =""
 	# assessment button
 	if st.button("Predict"):
